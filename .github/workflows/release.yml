@@ -1,0 +1,17 @@
+name: Публикация релиза
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  release:
+    uses: autumn-library/workflows/.github/workflows/release.yml@v1
+    with:
+      oscript_version: stable
+      package_mask: async-*.ospx
+      trusted_publishing: true
